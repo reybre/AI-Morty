@@ -57,10 +57,14 @@ def interpreter():
         basic_functions.info()
     if 'what does the fox say' in variables.current_phrase:
         print('\n\n2012 called and they want their stupid video back')
-    if ('date' in variables.current_phrase) or ('day' in variables.current_phrase):
+    if (' date' in variables.current_phrase) or (' day ' in variables.current_phrase):
         basic_functions.date()
     if 'haiku' in variables.current_phrase:
         basic_functions.haiku_spitter()
+    if ('weather' in variables.current_phrase):
+        loc = variables.current_phrase.split("in",1)[1]
+        basic_functions.weather(loc,'current')
+
 
 
 

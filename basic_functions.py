@@ -2,6 +2,7 @@ __author__ = 'bjreynol'
 import variables
 import random
 import datetime
+import pywapi
 
 
 
@@ -90,6 +91,30 @@ def haiku_spitter():
         for x in range(0,3):
             print(haikus[rand_number*3-3+x])
     haikus = None
+def weather(loc,type):
+
+    lookup = pywapi.get_location_ids(loc)
+    loc_id='blank'
+    for i in lookup:
+        loc_id = i
+    if(loc_id=='blank'):
+        print("\n\nI couldn't figure out where " + loc + " is, try again?")
+        return 0
+    weather_com_result = pywapi.get_weather_from_weather_com(loc_id)
+    if(type=='current'):
+        text = weather_com_result['current_conditions']['text']
+        if text == 'N/A':
+            text = "I dont know current cloud conditions here :("
+        temp = str(float(weather_com_result['current_conditions']['temperature'])*9/5+32)
+
+        moon = weather_com_result['current_conditions']['moon_phase']['text']
+        print("\n\nAcquiring current conditions in " + weather_com_result['location']['name'] + "\n" + text +
+              "\nTemperature is " + temp + '\nMoon phase is ' + moon )
+
+
+
+
+#
 
 
 
