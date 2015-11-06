@@ -9,12 +9,16 @@ import pywapi
 
 
 def intro():
+    '''An intro program, it basically just reads out data'''
     print(
         "Hello, " + variables.user + " \n\nI am a companion written for you by " + variables.creator + ", my name is " + variables.ai_name + "\n\n")
     print("I currently have your location set to: " + variables.location + '\n\n')
 
 
 def joker():
+    '''Randomly tells you one of one hundred jokes!!! If you want to add a joke just place
+    it in a new line in jokes.txt
+    '''
     rand_number = random.randint(0, 99)
     with open('jokes', 'r') as file:
         jokes = file.readlines()
@@ -23,6 +27,12 @@ def joker():
 
 
 def infochanger(item, new_info):
+    '''
+
+    :param item: the object you wish to change (ai_name, user_name,location)
+    :param new_info: the new string containing the name of the new item
+    :return: returns 0
+    '''
     if item == 'ai_name':
         variables.ai_name = new_info
         print('\n\n Got it! My new name is ' + variables.ai_name)
@@ -45,6 +55,10 @@ def infochanger(item, new_info):
 
 
 def quit():
+    '''
+    quits the program
+    :return:
+    '''
     print('\n\n Okay! Let me save any changed data first')
     data = [variables.ai_name, variables.creator, variables.user, variables.location]
     data = data + variables.command_list
@@ -57,6 +71,13 @@ def quit():
 
 
 def math(type, x, y):
+    '''
+
+    :param type: str specifying the type of math to be done
+    :param x: first number (must be float)
+    :param y: second number (must be float)
+    :return:
+    '''
     if type == 'multiply':
         ans = x * y
         print('\n\n ' + str(x) + ' times ' + str(y) + ' is equal to ' + str(ans))
@@ -72,15 +93,29 @@ def math(type, x, y):
     ans = None
 
 def info():
+    '''
+    tells you what Morty knows. Can be modified by writing new lines in info.txt
+    :return:
+    '''
     print('\n\nI currently have ' + str(len(variables.command_list)) + ' functions' + '\n\nThe functions I can currently do are: \n\n')
     for item in variables.command_list:
         print(str(item) + '\n')
 def date():
+    '''
+    tells you the date
+    :return:
+    '''
 
     today = datetime.date.today()
     print("\n\nToday's date is {:%b, %d %Y}".format(today))
 
 def haiku_spitter():
+    '''
+    spits out one of the 16ish haikus in haiku.txt
+
+    to add a new one just write it in new lines
+    :return:
+    '''
     haikus = []
 
     with open('Haikus','r') as file:
@@ -92,6 +127,12 @@ def haiku_spitter():
             print(haikus[rand_number*3-3+x])
     haikus = None
 def weather(loc,type):
+    '''
+    tells you the weather
+    :param loc: a str containing a location
+    :param type: the type of weather asked for (current only works right now)
+    :return:
+    '''
 
     lookup = pywapi.get_location_ids(loc)
     loc_id='blank'
