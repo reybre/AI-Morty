@@ -100,16 +100,23 @@ def weather(loc,type):
     if(loc_id=='blank'):
         print("\n\nI couldn't figure out where " + loc + " is, try again?")
         return 0
-    weather_com_result = pywapi.get_weather_from_weather_com(loc_id)
-    if(type=='current'):
-        text = weather_com_result['current_conditions']['text']
-        if text == 'N/A':
-            text = "I dont know current cloud conditions here :("
-        temp = str(float(weather_com_result['current_conditions']['temperature'])*9/5+32)
+    weather_com_result = pywapi.get_weather_from_weather_com(loc_id,'imperial')
+    try:
+        if(type=='current'):
 
-        moon = weather_com_result['current_conditions']['moon_phase']['text']
-        print("\n\nAcquiring current conditions in " + weather_com_result['location']['name'] + "\n" + text +
-              "\nTemperature is " + temp + '\nMoon phase is ' + moon )
+            text = weather_com_result['current_conditions']['text']
+
+            if text == 'N/A':
+                text = "I dont know current cloud conditions here :("
+            temp = str(weather_com_result['current_conditions']['temperature'])
+            moon = weather_com_result['current_conditions']['moon_phase']['text']
+            print("\n\nAcquiring current conditions in " + weather_com_result['location']['name'] + "\n" + text +
+                 "\nTemperature is " + temp + '\nMoon phase is ' + moon )
+    except KeyError or IndexError or ValueError:
+
+        print("\n\nSorry, something broken...\n\nTry again!")
+        pass
+
 
 
 
