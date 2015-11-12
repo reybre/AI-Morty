@@ -92,7 +92,10 @@ def math(type, x, y):
         print('\n\n ' + str(x) + ' minus ' + str(y) + ' is equal to ' + str(ans))
     ans = None
 
+
 def info():
+
+
     '''
     tells you what Morty knows. Can be modified by writing new lines in info.txt
     :return:
@@ -100,7 +103,11 @@ def info():
     print('\n\nI currently have ' + str(len(variables.command_list)) + ' functions' + '\n\nThe functions I can currently do are: \n\n')
     for item in variables.command_list:
         print(str(item) + '\n')
+
+
 def date():
+
+
     '''
     tells you the date
     :return:
@@ -108,6 +115,7 @@ def date():
 
     today = datetime.date.today()
     print("\n\nToday's date is {:%b, %d %Y}".format(today))
+
 
 def haiku_spitter():
     '''
@@ -126,7 +134,11 @@ def haiku_spitter():
         for x in range(0,3):
             print(haikus[rand_number*3-3+x])
     haikus = None
+
+
 def weather(loc,type):
+
+
     '''
     tells you the weather
     :param loc: a str containing a location

@@ -89,7 +89,9 @@ def interpreter():
         basic_functions.date()
     elif 'haiku' in variables.current_phrase:
         basic_functions.haiku_spitter()
-    elif ('weather' in variables.current_phrase):
+    elif 'weather'==variables.current_phrase:
+        print("\n\nThat is a word......")
+    elif ('weather' in variables.current_phrase) and ('weather'!=variables.current_phrase):
         loc = variables.current_phrase.split("in",1)[1]
         basic_functions.weather(loc,'current')
 
