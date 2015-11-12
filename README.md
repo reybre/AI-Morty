@@ -2,7 +2,7 @@
 ######the program to end all programs
 
 ##11/12: version 0.6.2
-1. Packaged executable file in dist folder! This will be continued for releases in future
+1. Packaged executable file! run start.exe This will be continued for releases in future
 2. bug fix for weather function. Still a little buggy
 3. changed cat reward from ascii art to .jpg with system command (only for windows)
 
