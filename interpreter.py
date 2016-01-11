@@ -94,6 +94,8 @@ def interpreter():
     elif ('weather' in variables.current_phrase) and ('weather'!=variables.current_phrase):
         loc = variables.current_phrase.split("in",1)[1]
         basic_functions.weather(loc,'current')
+    elif ('woof' in variables.current_phrase):
+        print("\n\nWoof Woof!! I am dog!")
 
 
 
